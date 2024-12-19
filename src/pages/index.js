@@ -4,10 +4,11 @@ import Cards from "@/components/Cards";
 import Sellers from "@/components/Sellers";
 import Layout from '@/layout';
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 const fetchPageData = async (type) => {
   try {
-    const res = await fetch(`${baseUrl}/api?type=${type}`);
+    const res = await fetch(`${baseUrl}/api/home/?type=${type}`);
     if (!res.ok) throw new Error(`Failed to fetch data for type ${type}`);
     const { data, total } = await res.json();
     return { data, total };
@@ -39,10 +40,10 @@ export async function getServerSideProps() {
       mock4,
     },
   };
-
 }
 
 export default function HomePage({ mock1, mock2, mock4 }) {
+
   return (
     <Layout>
       <div>
