@@ -1,4 +1,3 @@
-'use client';
 import styled from 'styled-components';
 export const NavbarStyled = styled.nav`
   display: flex;

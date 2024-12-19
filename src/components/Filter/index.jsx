@@ -1,4 +1,3 @@
-import React from 'react';
 import { FilterStyled, FilterNameStyled, FilterOptionsWrapper } from './styles';
 import CheckboxFilter from './CheckboxFilter';
 import { breedData, colorData, genderData } from './data';
