@@ -17,7 +17,6 @@ import chatIcon from '@/assets/icons/chatIcon.svg';
 import ProductLayout from '../layout'
 
 
-
 const fetchPageData = async (type) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/home/?type=${type}`);
