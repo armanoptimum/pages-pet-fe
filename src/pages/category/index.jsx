@@ -6,8 +6,7 @@ import Banner from '@/components/Banner';
 import Layout from '@/layout';
 
 const ITEMS_PER_PAGE = 16;
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
-
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 const fetchPageData = async (type, page = 1, gender = '', color = '', breed = '', min = 0, max = Infinity) => {
   const res = await fetch(
@@ -18,14 +17,7 @@ const fetchPageData = async (type, page = 1, gender = '', color = '', breed = ''
 };
 
 export const getServerSideProps = async ({ query }) => {
-  const {
-    page = 1,
-    gender = '',
-    color = '',
-    breed = '',
-    min = 0,
-    max = Infinity,
-  } = query;
+  const { page = 1, gender = '', color = '', breed = '', min = 0, max = Infinity } = query;
 
   const { data, total } = await fetchPageData('mock3', page, gender, color, breed, min, max);
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
@@ -42,20 +34,20 @@ export const getServerSideProps = async ({ query }) => {
 const Category = ({ data, total, totalPages }) => {
   return (
     <Layout>
-    <CategoryStyled>
-      <Banner {...bannerFourMock} style="secondary" reversed />
-      <CategoryContentWrapperStyled>
-        <Filter />
-        <Cards
-          pagination={totalPages}
-          cardData={data}
-          paragraph="Small Dog"
-          header={`${total} puppies`}
-          sectionType="secondary"
-          colCountMax={3}
-        />
-      </CategoryContentWrapperStyled>
-    </CategoryStyled>
+      <CategoryStyled>
+        <Banner {...bannerFourMock} style="secondary" reversed />
+        <CategoryContentWrapperStyled>
+          <Filter />
+          <Cards
+            pagination={totalPages}
+            cardData={data}
+            paragraph="Small Dog"
+            header={`${total} puppies`}
+            sectionType="secondary"
+            colCountMax={3}
+          />
+        </CategoryContentWrapperStyled>
+      </CategoryStyled>
     </Layout>
   );
 };

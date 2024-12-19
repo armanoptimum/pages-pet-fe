@@ -1,7 +1,7 @@
 import { bannerOneMock, bannerThreeMock, bannerTwoMock } from '@/components/Banner/data';
-import Banner from "@/components/Banner";
-import Cards from "@/components/Cards";
-import Sellers from "@/components/Sellers";
+import Banner from '@/components/Banner';
+import Cards from '@/components/Cards';
+import Sellers from '@/components/Sellers';
 import Layout from '@/layout';
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -23,11 +23,7 @@ export async function getServerSideProps() {
   let mock4 = { data: [], total: 0 };
 
   try {
-    const responses = await Promise.all([
-      fetchPageData('mock1'),
-      fetchPageData('mock2'),
-      fetchPageData('mock4'),
-    ]);
+    const responses = await Promise.all([fetchPageData('mock1'), fetchPageData('mock2'), fetchPageData('mock4')]);
     [mock1, mock2, mock4] = responses;
   } catch (err) {
     console.error('Error fetching data:', err);
@@ -43,29 +39,28 @@ export async function getServerSideProps() {
 }
 
 export default function HomePage({ mock1, mock2, mock4 }) {
-
   return (
     <Layout>
       <div>
-      <Banner {...bannerOneMock} />
-      <Cards cardData={mock1.data} paragraph="Take a look at some of our pets" header="What's new?" colCountMax={4} />
-      <Banner {...bannerTwoMock} reversed={true} style="secondary" />
-      <Cards
-        cardData={mock2.data}
-        paragraph="Hard to choose the right products for your pets?"
-        header="Our Products"
-        colCountMax={4}
-      />
-      <Sellers />
-      <Banner {...bannerThreeMock} style="secondary" />
-      <Cards
-        type="secondary"
-        cardData={mock4.data}
-        paragraph="Useful pet knowledge"
-        header="Did you already know?"
-        colCountMax={3}
-        colCountMin={1}
-      />
+        <Banner {...bannerOneMock} />
+        <Cards cardData={mock1.data} paragraph="Take a look at some of our pets" header="What's new?" colCountMax={4} />
+        <Banner {...bannerTwoMock} reversed={true} style="secondary" />
+        <Cards
+          cardData={mock2.data}
+          paragraph="Hard to choose the right products for your pets?"
+          header="Our Products"
+          colCountMax={4}
+        />
+        <Sellers />
+        <Banner {...bannerThreeMock} style="secondary" />
+        <Cards
+          type="secondary"
+          cardData={mock4.data}
+          paragraph="Useful pet knowledge"
+          header="Did you already know?"
+          colCountMax={3}
+          colCountMin={1}
+        />
       </div>
     </Layout>
   );

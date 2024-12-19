@@ -6,7 +6,16 @@ import { filterByPrice, filterByBreed, filterByColor, filterByGender } from './u
 
 const ITEMS_PER_PAGE = 16;
 
-const fetchData = (type, page = 1, limit = ITEMS_PER_PAGE, colors = [], breeds = [], genders = [], min = 0, max = Infinity) => {
+const fetchData = (
+  type,
+  page = 1,
+  limit = ITEMS_PER_PAGE,
+  colors = [],
+  breeds = [],
+  genders = [],
+  min = 0,
+  max = Infinity
+) => {
   let data = [];
 
   switch (type) {
@@ -39,34 +48,28 @@ const fetchData = (type, page = 1, limit = ITEMS_PER_PAGE, colors = [], breeds =
 };
 
 export default async function handler(req, res) {
-    const { query } = req;
-    const {
-      type = 'mock1',
-      page = 1,
-      limit = ITEMS_PER_PAGE,
-      color = [],
-      breed = [],
-      gender = [],
-      min = 0,
-      max = Infinity,
-    } = query;
+  const { query } = req;
+  const {
+    type = 'mock1',
+    page = 1,
+    limit = ITEMS_PER_PAGE,
+    color = [],
+    breed = [],
+    gender = [],
+    min = 0,
+    max = Infinity,
+  } = query;
 
+  const colors = color.split(',');
+  const breeds = breed.split(',');
+  const genders = gender.split(',');
 
-    const colors = color.split(',');
-    const breeds = breed.split(',');
-    const genders = gender.split(',');
+  const { paginatedData, total } = fetchData(type, page, limit, colors, breeds, genders, min, max);
+  const totalPages = Math.ceil(total / limit);
 
-
-
-
-
-
-    const { paginatedData, total } = fetchData(type, page, limit, colors, breeds, genders, min, max);
-    const totalPages = Math.ceil(total / limit);
-
-    return res.status(200).json({
-      data: paginatedData,
-      total,
-      totalPages,
-    });
+  return res.status(200).json({
+    data: paginatedData,
+    total,
+    totalPages,
+  });
 }

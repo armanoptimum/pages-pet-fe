@@ -14,18 +14,17 @@ import {
 import Button from '@/components/shared/Button';
 import { BUTTON_STYLES } from '@/components/shared/Button/constants';
 import chatIcon from '@/assets/icons/chatIcon.svg';
-import ProductLayout from '../layout'
-
+import ProductLayout from '../layout';
 
 const fetchPageData = async (type) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/home/?type=${type}`);
     const { data } = await res.json();
     return data;
-  } catch(err) {
+  } catch (err) {
     return {
-      data: []
-    }
+      data: [],
+    };
   }
 };
 
@@ -42,7 +41,6 @@ const fetchData = async (id) => {
   }
 };
 
-
 export async function getServerSideProps({ params }) {
   const product = await fetchData(params.id);
   const mockData = await fetchPageData('mock1');
@@ -50,11 +48,10 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       product,
-      mockData
+      mockData,
     },
   };
 }
-
 
 const Product = ({ product, mockData }) => {
   if (!product) {

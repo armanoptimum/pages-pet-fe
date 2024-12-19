@@ -1,4 +1,4 @@
-import { mock1 } from "../db/mock1";
+import { mock1 } from '../db/mock1';
 
 const handler = (req, res) => {
   const { id } = req.query;
@@ -8,7 +8,7 @@ const handler = (req, res) => {
     return res.status(404).json({ message: 'Product not found' });
   }
 
-  return res.status(200).json(product); 
+  return res.status(200).json(product);
 };
 
 export default handler;

@@ -8,7 +8,7 @@ export const mock3 = [
     id: '1',
     img: dog1Img,
     name: 'MO231 - Pamerian white',
-  
+
     breed: 'small',
     details: [
       { key: 'Gene', val: 'Female' },
@@ -2892,7 +2892,7 @@ export const mock3 = [
     price: '1.900.000',
     color: 'tan',
     price: '6.900.000',
-    gender: 'female', 
+    gender: 'female',
     info: {
       sku: '1000000',
       gender: 'female',
