@@ -17,7 +17,7 @@ const fetchData = (
   max = Infinity
 ) => {
   let data = [];
-
+  
   switch (type) {
     case 'mock1':
       data = mock1;
@@ -53,16 +53,17 @@ export default async function handler(req, res) {
     type = 'mock1',
     page = 1,
     limit = ITEMS_PER_PAGE,
-    color = [],
-    breed = [],
-    gender = [],
+    color,
+    breed,
+    gender,
     min = 0,
     max = Infinity,
   } = query;
 
-  const colors = color.split(',');
-  const breeds = breed.split(',');
-  const genders = gender.split(',');
+
+  const colors = color?.split(',');
+  const breeds = breed?.split(',');
+  const genders = gender?.split(',');
 
   const { paginatedData, total } = fetchData(type, page, limit, colors, breeds, genders, min, max);
   const totalPages = Math.ceil(total / limit);
