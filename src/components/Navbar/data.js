@@ -13,7 +13,7 @@ export const listItemData = [
 
   {
     item: 'Category',
-    href: 'category',
+    href: '/category',
   },
 
   {
