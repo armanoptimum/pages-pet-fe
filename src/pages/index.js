@@ -1,8 +1,8 @@
 import { bannerOneMock, bannerThreeMock, bannerTwoMock } from '@/components/Banner/data';
 import Banner from "@/components/Banner";
 import Cards from "@/components/Cards";
-import Layout from "@/components/layout";
 import Sellers from "@/components/Sellers";
+import Layout from '@/layout';
 
 
 const fetchPageData = async (type) => {
