@@ -1,9 +1,9 @@
-import Navbar from '@/components/Navbar';
+import { Block } from './styles';
 
 const Layout = () => {
   return (
     <div>
-        <Navbar />
+        <Block />
     </div>
   )
 }
