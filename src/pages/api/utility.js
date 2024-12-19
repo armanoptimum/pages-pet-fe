@@ -1,5 +1,6 @@
 export const filterByGender = (data, genders) => {
   if (genders.length > 0 && genders[0] !== '') {
+    console.log(genders[0])
     data = data.filter((item) =>
       item.details.some((detail) => detail.key.toLowerCase() === 'gene' && genders.includes(detail.val.toLowerCase()))
     );
@@ -23,9 +24,8 @@ export const filterByBreed = (data, breeds) => {
 
 export const filterByPrice = (data, minPrice, maxPrice) => {
   data = data.filter((item) => {
-    const price = +item.price.replace(/\./g, '');
+    const price = +item.price?.replace(/\./g, '');
     return price >= minPrice && price <= maxPrice;
   });
-
   return data;
 };

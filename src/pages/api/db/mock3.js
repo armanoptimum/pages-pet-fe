@@ -8,6 +8,7 @@ export const mock3 = [
     id: '1',
     img: dog1Img,
     name: 'MO231 - Pamerian white',
+  
     breed: 'small',
     details: [
       { key: 'Gene', val: 'Female' },

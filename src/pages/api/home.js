@@ -52,9 +52,14 @@ export default async function handler(req, res) {
     } = query;
 
 
-    const colors = Array.isArray(color) ? color.map(c => c.toLowerCase()) : [];
-    const breeds = Array.isArray(breed) ? breed.map(b => b.toLowerCase()) : [];
-    const genders = Array.isArray(gender) ? gender.map(g => g.toLowerCase()) : [];
+    const colors = color.split(',');
+    const breeds = breed.split(',');
+    const genders = gender.split(',');
+
+
+
+
+
 
     const { paginatedData, total } = fetchData(type, page, limit, colors, breeds, genders, min, max);
     const totalPages = Math.ceil(total / limit);
